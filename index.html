@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html>
   <script>
+    // Randomly returns either ‘Rock’, ‘Paper’ or ‘Scissors’
+    function computerPlay() {
+      let randomInt = Math.floor(Math.random() * 3); // Generates a random int between 0 and 2
+      let randomChoice = undefined;
+
+      console.log(randomInt);
+
+      if(randomInt == 0) {
+        randomChoice = "Rock";
+      } else if(randomInt == 1) {
+        randomChoice = "Paper";
+      } else {
+        randomChoice = "Scissors";
+      }
+
+      return randomChoice;
+    }
   </script>
 </html>
