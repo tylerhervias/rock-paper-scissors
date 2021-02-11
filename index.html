@@ -6,17 +6,48 @@
       let randomInt = Math.floor(Math.random() * 3); // Generates a random int between 0 and 2
       let randomChoice = undefined;
 
-      console.log(randomInt);
-
       if(randomInt == 0) {
-        randomChoice = "Rock";
+        randomChoice = "rock";
       } else if(randomInt == 1) {
-        randomChoice = "Paper";
+        randomChoice = "paper";
       } else {
-        randomChoice = "Scissors";
+        randomChoice = "scissors";
       }
 
       return randomChoice;
+    }
+
+    // Plays a single round of Rock Paper Scissors
+    // Returns a string that declares the winner of the round
+    function playRound(playerSelection, computerSelection) {
+      // Makes the player selection lowercase before checking equality
+      playerSelection = playerSelection.toLowerCase();
+
+      if(playerSelection == 'rock' && computerSelection == 'rock') {
+        console.log("Tie!");
+      } else if(playerSelection == 'rock' && computerSelection == 'paper') {
+        console.log("You lose! Paper beats Rock");
+      } else if(playerSelection == 'rock' && computerSelection == 'scissors') {
+        console.log("You win! Rock beats Scissors");
+      } else if(playerSelection == 'paper' && computerSelection == 'rock') {
+        console.log("You win! Paper beats Rock");
+      } else if(playerSelection == 'paper' && computerSelection == 'paper') {
+        console.log("Tie!");
+      } else if(playerSelection == 'paper' && computerSelection == 'scissors') {
+        console.log("You lose! Scissors beats Paper");
+      } else if(playerSelection == 'scissors' && computerSelection == 'rock') {
+        console.log("You lose! Rock beats Scissors");
+      } else if(playerSelection == 'scissors' && computerSelection == 'paper') {
+        console.log("You win! Scissors beats Paper!");
+      } else if(playerSelection == 'scissors' && computerSelection == 'scissors') {
+        console.log("Tie!");
+      }
+    }
+
+    function game() {
+      let playerInput = prompt("Choose 'Rock', 'Paper', or 'Scissors'");
+      
+      playRound(playerInput, computerPlay());
     }
   </script>
 </html>
