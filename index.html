@@ -23,9 +23,6 @@
     // Plays a single round of Rock Paper Scissors
     // Returns a string that declares the winner of the round
     function playRound(playerSelection, computerSelection) {
-      // Makes the player selection lowercase before checking equality
-      playerSelection = playerSelection.toLowerCase();
-
       if(playerSelection == 'rock' && computerSelection == 'rock') {
         result = "Tie";
       } else if(playerSelection == 'rock' && computerSelection == 'paper') {
@@ -55,22 +52,29 @@
       return result;
     }
 
+    // Prompts the user for a choice and simulates a round of the game
+    // Also keeps track of the score to determine the winner
     function game() {
       let playerInput = prompt("Choose 'Rock', 'Paper', or 'Scissors'");
-      
-      playRound(playerInput, computerPlay());
-      console.log(result);
-      console.log("You: " + playerScore);
-      console.log("Computer: " + computerScore);
+      let playerSelection = playerInput.toLowerCase();
 
-      if(playerScore == 5) {
-        console.log("You won the game!");
-        playerScore = 0;
-        computerScore = 0;
-      } else if(computerScore == 5) {
-        console.log("You lost the game!");
-        playerScore = 0;
-        computerScore = 0;
+      if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection =='scissors') {
+        playRound(playerSelection, computerPlay());
+        console.log(result);
+        console.log("You: " + playerScore);
+        console.log("Computer: " + computerScore);
+
+        if(playerScore == 5) {
+          console.log("You won the game!");
+          playerScore = 0;
+          computerScore = 0;
+        } else if(computerScore == 5) {
+          console.log("You lost the game!");
+          playerScore = 0;
+          computerScore = 0;
+        }
+      } else {
+        console.log('You entered an incorrect option! Please try again');
       }
     }
   </script>
