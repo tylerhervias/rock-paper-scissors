@@ -24,57 +24,62 @@
     // Returns a string that declares the winner of the round
     function playRound(playerSelection, computerSelection) {
       if(playerSelection == 'rock' && computerSelection == 'rock') {
-        result = "Tie";
+        result = "TIE (Rock vs Rock)";
       } else if(playerSelection == 'rock' && computerSelection == 'paper') {
-        result = "You lose! Paper beats Rock";
+        result = "LOSE (Rock vs Paper)";
         computerScore += 1;
       } else if(playerSelection == 'rock' && computerSelection == 'scissors') {
-        result = "You win! Rock beats Scissors";
+        result = "WIN (Rock vs Scissors)";
         playerScore += 1;
       } else if(playerSelection == 'paper' && computerSelection == 'rock') {
-        result = "You win! Paper beats Rock";
+        result = "WIN (Paper vs Rock)";
         playerScore += 1;
       } else if(playerSelection == 'paper' && computerSelection == 'paper') {
-        result = "Tie";
+        result = "TIE (Paper vs Paper)";
       } else if(playerSelection == 'paper' && computerSelection == 'scissors') {
-        result = "You lose! Scissors beats Paper";
+        result = "LOSE (Paper vs Scissors)";
         computerScore += 1;
       } else if(playerSelection == 'scissors' && computerSelection == 'rock') {
-        result = "You lose! Rock beats Scissors";
+        result = "LOSE (Scissors vs Rock)";
         computerScore += 1;
       } else if(playerSelection == 'scissors' && computerSelection == 'paper') {
-        result = "You win! Scissors beats Paper!";
+        result = "WIN (Scissors vs Paper)";
         playerScore += 1;
       } else if(playerSelection == 'scissors' && computerSelection == 'scissors') {
-        result = "Tie";
+        result = "TIE (Scissors vs Scissors)";
       }
 
       return result;
     }
 
-    // Prompts the user for a choice and simulates a round of the game
-    // Also keeps track of the score to determine the winner
+    // Simulates a 5 round game
+    // - prompts the user for a choice at the start of each round
+    // - displays the score after each round
+    // - displays the winner at the end of the game
     function game() {
-      let playerInput = prompt("Choose 'Rock', 'Paper', or 'Scissors'");
-      let playerSelection = playerInput.toLowerCase();
+      for(let roundNumber = 1; roundNumber < 6; roundNumber++) {
+        let playerInput = prompt("Choose 'Rock', 'Paper', or 'Scissors'");
+        let playerSelection = playerInput.toLowerCase();
 
-      if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection =='scissors') {
         playRound(playerSelection, computerPlay());
-        console.log(result);
-        console.log("You: " + playerScore);
-        console.log("Computer: " + computerScore);
+        console.log("Round " + roundNumber + " of 5 - " + result);
+        console.log("Score: " + playerScore + " - " + computerScore);
+        console.log("");
+      }
 
-        if(playerScore == 5) {
-          console.log("You won the game!");
-          playerScore = 0;
-          computerScore = 0;
-        } else if(computerScore == 5) {
-          console.log("You lost the game!");
-          playerScore = 0;
-          computerScore = 0;
-        }
-      } else {
-        console.log('You entered an incorrect option! Please try again');
+      if(roundNumber = 5 && playerScore > computerScore) {
+        console.log("GAME OVER: You won the game!");
+        console.log("Type 'game()' in the console to play again.");
+        playerScore = 0;
+        computerScore = 0;
+      } else if(roundNumber = 5 && computerScore > playerScore) {
+        console.log("GAME OVER: You lose the game!");
+        console.log("Type 'game()' in the console to play again.");
+        playerScore = 0;
+        computerScore = 0;
+      } else if(roundNumber = 5 && playerScore == computerScore) {
+        console.log("GAME OVER: It's a tie!");
+        console.log("Type 'game()' in the console to play again.");
       }
     }
   </script>
