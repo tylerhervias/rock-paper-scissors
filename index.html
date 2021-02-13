@@ -61,10 +61,15 @@
         let playerInput = prompt("Choose 'Rock', 'Paper', or 'Scissors'");
         let playerSelection = playerInput.toLowerCase();
 
-        playRound(playerSelection, computerPlay());
-        console.log("Round " + roundNumber + " of 5 - " + result);
-        console.log("Score: " + playerScore + " - " + computerScore);
-        console.log("");
+        if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
+          playRound(playerSelection, computerPlay());
+          console.log("Round " + roundNumber + " of 5 - " + result);
+          console.log("Score: " + playerScore + " - " + computerScore);
+          console.log("");
+        } else {
+          console.log('You entered an invalid option.');
+          break;
+        }
       }
 
       if(roundNumber = 5 && playerScore > computerScore) {
