@@ -20,67 +20,67 @@ function computerPlay() {
 // Plays a single round of Rock Paper Scissors
 // Returns a string that declares the winner of the round
 function playRound(playerSelection, computerSelection) {
-  if(playerSelection == 'rock' && computerSelection == 'rock') {
+  if(playerSelection == "rock" && computerSelection == "rock") {
     result = "TIE (Rock vs Rock)";
-  } else if(playerSelection == 'rock' && computerSelection == 'paper') {
+  } else if(playerSelection == "rock" && computerSelection == "paper") {
     result = "LOSE (Rock vs Paper)";
     computerScore += 1;
-  } else if(playerSelection == 'rock' && computerSelection == 'scissors') {
+  } else if(playerSelection == "rock" && computerSelection == "scissors") {
     result = "WIN (Rock vs Scissors)";
     playerScore += 1;
-  } else if(playerSelection == 'paper' && computerSelection == 'rock') {
+  } else if(playerSelection == "paper" && computerSelection == "rock") {
     result = "WIN (Paper vs Rock)";
     playerScore += 1;
-  } else if(playerSelection == 'paper' && computerSelection == 'paper') {
+  } else if(playerSelection == "paper" && computerSelection == "paper") {
     result = "TIE (Paper vs Paper)";
-  } else if(playerSelection == 'paper' && computerSelection == 'scissors') {
+  } else if(playerSelection == "paper" && computerSelection == "scissors") {
     result = "LOSE (Paper vs Scissors)";
     computerScore += 1;
-  } else if(playerSelection == 'scissors' && computerSelection == 'rock') {
+  } else if(playerSelection == "scissors" && computerSelection == "rock") {
     result = "LOSE (Scissors vs Rock)";
     computerScore += 1;
-  } else if(playerSelection == 'scissors' && computerSelection == 'paper') {
+  } else if(playerSelection == "scissors" && computerSelection == "paper") {
     result = "WIN (Scissors vs Paper)";
     playerScore += 1;
-  } else if(playerSelection == 'scissors' && computerSelection == 'scissors') {
+  } else if(playerSelection == "scissors" && computerSelection == "scissors") {
     result = "TIE (Scissors vs Scissors)";
   }
 
   return result;
 }
 
-// Simulates a 5 round game
-// - prompts the user for a choice at the start of each round
+// Handles the main game functionality
+// - plays a single round on each button press
 // - displays the score after each round
-// - displays the winner at the end of the game
+// - displays the winner once one player reaches 5 points
 function game() {
-  for(let roundNumber = 1; roundNumber < 6; roundNumber++) {
-    let playerInput = prompt("Choose 'Rock', 'Paper', or 'Scissors'");
-    let playerSelection = playerInput.toLowerCase();
+  const buttons = document.querySelectorAll(".btn");
+  const resultText = document.querySelector(".result-text");
+  const scoreText = document.querySelector(".score-text");
+  const winnerText = document.querySelector(".winner-text");
 
-    if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      let playerChoice = button.innerHTML;
+      let playerSelection = playerChoice.toLowerCase();
       playRound(playerSelection, computerPlay());
-      console.log("Round " + roundNumber + " of 5 - " + result);
-      console.log("Score: " + playerScore + " - " + computerScore);
-      console.log("");
-    } else {
-      console.log('You entered an invalid option.');
-      break;
-    }
-  }
 
-  if(roundNumber = 5 && playerScore > computerScore) {
-    console.log("GAME OVER: You won the game!");
-    console.log("Type 'game()' in the console to play again.");
-    playerScore = 0;
-    computerScore = 0;
-  } else if(roundNumber = 5 && computerScore > playerScore) {
-    console.log("GAME OVER: You lose the game!");
-    console.log("Type 'game()' in the console to play again.");
-    playerScore = 0;
-    computerScore = 0;
-  } else if(roundNumber = 5 && playerScore == computerScore) {
-    console.log("GAME OVER: It's a tie!");
-    console.log("Type 'game()' in the console to play again.");
-  }
+      resultText.innerHTML = result; 
+      scoreText.innerHTML = "Score: " + playerScore + " - " + computerScore;
+
+      if(playerScore == 5) {
+        winnerText.innerHTML = "You won the game!";
+        playerScore = 0;
+        computerScore = 0;
+      } else if(computerScore == 5) {
+        winnerText.innerHTML = "You lost the game!";
+        playerScore = 0;
+        computerScore = 0;
+      } else {
+        winnerText.innerHTML = "";
+      }
+    });
+  });
 }
+
+game();
