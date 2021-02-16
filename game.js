@@ -65,19 +65,19 @@ function game() {
       let playerSelection = playerChoice.toLowerCase();
       playRound(playerSelection, computerPlay());
 
-      resultText.innerHTML = result; 
-      scoreText.innerHTML = "Score: " + playerScore + " - " + computerScore;
+      resultText.textContent = result; 
+      scoreText.textContent = "Score: " + playerScore + " - " + computerScore;
 
       if(playerScore == 5) {
-        winnerText.innerHTML = "You won the game!";
+        winnerText.textContent = "You won the game!";
         playerScore = 0;
         computerScore = 0;
       } else if(computerScore == 5) {
-        winnerText.innerHTML = "You lost the game!";
+        winnerText.textContent = "You lost the game!";
         playerScore = 0;
         computerScore = 0;
       } else {
-        winnerText.innerHTML = "";
+        winnerText.textContent = "";
       }
     });
   });
