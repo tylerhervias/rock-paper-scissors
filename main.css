@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #e4e4e4;
+  font-family: 'Lato', sans-serif;
 }
 
 .container {
@@ -9,4 +16,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 60px;
+  margin-top: 50px;
 }
