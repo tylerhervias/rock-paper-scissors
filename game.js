@@ -56,7 +56,8 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   const buttons = document.querySelectorAll(".btn");
   const resultText = document.querySelector(".result-text");
-  const scoreText = document.querySelector(".score-text");
+  const playerScoreText = document.querySelector(".player-score");
+  const computerScoreText = document.querySelector(".computer-score");
   const winnerText = document.querySelector(".winner-text");
 
   buttons.forEach((button) => {
@@ -66,14 +67,41 @@ function game() {
       playRound(playerSelection, computerPlay());
 
       resultText.textContent = result; 
-      scoreText.textContent = "Score: " + playerScore + " - " + computerScore;
+      playerScoreText.textContent = "Your Score: " + playerScore;
+      computerScoreText.textContent = "Computer Score: " + computerScore;
 
       if(playerScore == 5) {
         winnerText.textContent = "You won the game!";
+
+        const rockButton = document.querySelector(".rock-btn");
+        rockButton.setAttribute("disabled", "disabled");
+        rockButton.setAttribute("style", "background-color: #484848; cursor: default;");
+
+        const paperButton = document.querySelector(".paper-btn");
+        paperButton.setAttribute("disabled", "disabled");
+        paperButton.setAttribute("style", "background-color: #484848; cursor: default;");
+
+        const scissorsButton = document.querySelector(".scissors-btn");
+        scissorsButton.setAttribute("disabled", "disabled");
+        scissorsButton.setAttribute("style", "background-color: #484848; cursor: default;");
+
         playerScore = 0;
         computerScore = 0;
       } else if(computerScore == 5) {
         winnerText.textContent = "You lost the game!";
+
+        const rockButton = document.querySelector(".rock-btn");
+        rockButton.setAttribute("disabled", "disabled");
+        rockButton.setAttribute("style", "background-color: #484848; cursor: default;");
+
+        const paperButton = document.querySelector(".paper-btn");
+        paperButton.setAttribute("disabled", "disabled");
+        paperButton.setAttribute("style", "background-color: #484848; cursor: default;");
+
+        const scissorsButton = document.querySelector(".scissors-btn");
+        scissorsButton.setAttribute("disabled", "disabled");
+        scissorsButton.setAttribute("style", "background-color: #484848; cursor: default;");
+
         playerScore = 0;
         computerScore = 0;
       } else {

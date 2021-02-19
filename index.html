@@ -9,18 +9,24 @@
 
   <body>
     <div class="container">
-      <h1>Rock Paper Scissors</h1>
-      <p></p>
+      <div class="heading">
+        <h1 class="title">Rock Paper Scissors</h1>
+        <p class="subtext"><span class="choice rock-text">Rock</span> beats <span class="choice scissors-text">Scissors</span> | <span class="choice paper-text">Paper</span> beats <span class="choice rock-text">Rock</span> | <span class="choice scissors-text">Scissors</span> beats <span class="choice paper-text">Paper</span></p>
+      </div>
+      
+      <div class="score-text">
+        <p class="player-score">Your Score: 0</p>
+        <p class="computer-score">Computer Score: 0</p>
+      </div>
 
       <div class="buttons">
-        <button class="btn">Rock</button>
-        <button class="btn">Paper</button>
-        <button class="btn">Scissors</button>
+        <button class="btn rock-btn">Rock</button>
+        <button class="btn paper-btn">Paper</button>
+        <button class="btn scissors-btn">Scissors</button>
       </div>
 
       <div class="messages">
         <p class="result-text"></p>
-        <p class="score-text"></p>
         <p class="winner-text"></p>
       </div>
     </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200&family=PT+Sans+Narrow&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,18 +8,61 @@
 
 body {
   background-color: #e4e4e4;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Karla', sans-serif;
+  font-size: 25px;
+  text-align: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-h1 {
-  font-family: 'Fjalla One', sans-serif;
+.title {
+  font-family: 'PT Sans Narrow', sans-serif;
   font-size: 60px;
   margin-top: 50px;
+}
+
+.subtext {
+  margin: 15px;
+}
+
+.choice {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-weight: 1000;
+}
+
+.rock-text {
+  color:rgb(0, 110, 255);
+}
+
+.paper-text {
+  color:rgb(36, 172, 104);
+}
+
+.scissors-text {
+  color:rgb(172, 36, 36);
+}
+
+/* Buttons */
+.btn {
+  font-family: 'PT Sans Narrow', sans-serif;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 0;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 15px 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.rock-btn {
+  background-color: rgb(0, 110, 255);
+}
+
+.paper-btn {
+  background-color: rgb(36, 172, 104);
+}
+
+.scissors-btn {
+  background-color: rgb(172, 36, 36);
 }
