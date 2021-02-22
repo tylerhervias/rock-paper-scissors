@@ -18,12 +18,14 @@ function computerPlay() {
 }
 
 // Plays a single round of Rock Paper Scissors
-// Returns a string that declares the winner of the round
+// - displays the computer choice
+// - returns a string that shows the result of the round
 function playRound(playerSelection, computerSelection) {
   const rockChoice = document.querySelector(".rock-choice");
   const paperChoice = document.querySelector(".paper-choice");
   const scissorsChoice = document.querySelector(".scissors-choice");
 
+  // hides the computer choice from the previous round
   rockChoice.classList.add("hidden");
   paperChoice.classList.add("hidden");
   scissorsChoice.classList.add("hidden");
@@ -78,7 +80,7 @@ function playRound(playerSelection, computerSelection) {
 // Handles the main game functionality
 // - plays a single round on each button press
 // - displays the score after each round
-// - displays the winner once one player reaches 5 points
+// - displays the winner of the game once one player reaches 5 points
 function game() {
   const buttons = document.querySelectorAll(".btn");
   const resultText = document.querySelector(".result-text");

@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@200&family=PT+Sans+Narrow&display=swap');
 
+/* CSS Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Main Styling */
 body {
   background-color: #e4e4e4;
   font-family: 'Karla', sans-serif;
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -74,4 +76,23 @@ body {
 
 .scissors-btn {
   background-color: rgb(172, 36, 36);
+}
+
+/* Media Queries */
+@media (max-width: 720px) {
+  body {
+    font-size: 25px;
+  }
+
+  .title {
+    font-size: 45px;
+  }
+
+  .subtext {
+    display: none;
+  }
+
+  .score-text {
+    margin-top: 20px;
+  }
 }
