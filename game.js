@@ -20,30 +20,56 @@ function computerPlay() {
 // Plays a single round of Rock Paper Scissors
 // Returns a string that declares the winner of the round
 function playRound(playerSelection, computerSelection) {
+  const rockChoice = document.querySelector(".rock-choice");
+  const paperChoice = document.querySelector(".paper-choice");
+  const scissorsChoice = document.querySelector(".scissors-choice");
+
+  rockChoice.classList.add("hidden");
+  paperChoice.classList.add("hidden");
+  scissorsChoice.classList.add("hidden");
+
   if(playerSelection == "rock" && computerSelection == "rock") {
-    result = "TIE (Rock vs Rock)";
+    rockChoice.classList.remove("hidden");
+
+    result = "It's a tie!";
   } else if(playerSelection == "rock" && computerSelection == "paper") {
-    result = "LOSE (Rock vs Paper)";
+    paperChoice.classList.remove("hidden");
+
+    result = "You lost the round!";
     computerScore += 1;
   } else if(playerSelection == "rock" && computerSelection == "scissors") {
-    result = "WIN (Rock vs Scissors)";
+    scissorsChoice.classList.remove("hidden");
+
+    result = "You won the round!";
     playerScore += 1;
   } else if(playerSelection == "paper" && computerSelection == "rock") {
-    result = "WIN (Paper vs Rock)";
+    rockChoice.classList.remove("hidden");
+
+    result = "You won the round!";
     playerScore += 1;
   } else if(playerSelection == "paper" && computerSelection == "paper") {
-    result = "TIE (Paper vs Paper)";
+    paperChoice.classList.remove("hidden");
+
+    result = "It's a tie!";
   } else if(playerSelection == "paper" && computerSelection == "scissors") {
-    result = "LOSE (Paper vs Scissors)";
+    scissorsChoice.classList.remove("hidden");
+
+    result = "You lost the round!";
     computerScore += 1;
   } else if(playerSelection == "scissors" && computerSelection == "rock") {
-    result = "LOSE (Scissors vs Rock)";
+    rockChoice.classList.remove("hidden");
+
+    result = "You lost the round!";
     computerScore += 1;
   } else if(playerSelection == "scissors" && computerSelection == "paper") {
-    result = "WIN (Scissors vs Paper)";
+    paperChoice.classList.remove("hidden");
+
+    result = "You won the round!";
     playerScore += 1;
   } else if(playerSelection == "scissors" && computerSelection == "scissors") {
-    result = "TIE (Scissors vs Scissors)";
+    scissorsChoice.classList.remove("hidden");
+
+    result = "It's a tie!";
   }
 
   return result;
@@ -65,13 +91,13 @@ function game() {
       let playerChoice = button.innerHTML;
       let playerSelection = playerChoice.toLowerCase();
       playRound(playerSelection, computerPlay());
-
-      resultText.textContent = result; 
+      
+      resultText.textContent = result;
       playerScoreText.textContent = "Your Score: " + playerScore;
       computerScoreText.textContent = "Computer Score: " + computerScore;
 
       if(playerScore == 5) {
-        winnerText.textContent = "You won the game!";
+        winnerText.innerHTML = "<span style=\"color: rgb(36, 172, 104);\">You won the game!</span>";
 
         const rockButton = document.querySelector(".rock-btn");
         rockButton.setAttribute("disabled", "disabled");
@@ -88,7 +114,7 @@ function game() {
         playerScore = 0;
         computerScore = 0;
       } else if(computerScore == 5) {
-        winnerText.textContent = "You lost the game!";
+        winnerText.innerHTML = "<span style=\"color: rgb(172, 36, 36);\">You lost the game!</span>";
 
         const rockButton = document.querySelector(".rock-btn");
         rockButton.setAttribute("disabled", "disabled");

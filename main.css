@@ -40,6 +40,15 @@ body {
   color:rgb(172, 36, 36);
 }
 
+.winner-text {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Buttons */
 .btn {
   font-family: 'PT Sans Narrow', sans-serif;
