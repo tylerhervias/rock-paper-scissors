@@ -78,6 +78,10 @@ body {
   background-color: rgb(172, 36, 36);
 }
 
+.reset-btn {
+  background-color: rgb(36, 152, 172); 
+}
+
 /* Media Queries */
 @media (max-width: 720px) {
   body {

@@ -1,3 +1,17 @@
+const buttons = document.querySelectorAll(".btn");
+
+const rockButton = document.querySelector(".rock-btn");
+const paperButton = document.querySelector(".paper-btn");
+const scissorsButton = document.querySelector(".scissors-btn");
+
+const playerScoreText = document.querySelector(".player-score");
+const computerScoreText = document.querySelector(".computer-score");
+
+const resultText = document.querySelector(".result-text");
+const winnerText = document.querySelector(".winner-text");
+
+const playAgainButton = document.querySelector(".reset-btn");
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -30,6 +44,12 @@ function playRound(playerSelection, computerSelection) {
   paperChoice.classList.add("hidden");
   scissorsChoice.classList.add("hidden");
 
+  // makes the result text visible again when starting a new game
+  if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors") {
+    resultText.classList.remove("hidden");
+  }
+
+  // shows the computer choice and displays the result of the round
   if(playerSelection == "rock" && computerSelection == "rock") {
     rockChoice.classList.remove("hidden");
 
@@ -82,34 +102,33 @@ function playRound(playerSelection, computerSelection) {
 // - displays the score after each round
 // - displays the winner of the game once one player reaches 5 points
 function game() {
-  const buttons = document.querySelectorAll(".btn");
-  const resultText = document.querySelector(".result-text");
-  const playerScoreText = document.querySelector(".player-score");
-  const computerScoreText = document.querySelector(".computer-score");
-  const winnerText = document.querySelector(".winner-text");
-
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       let playerChoice = button.innerHTML;
       let playerSelection = playerChoice.toLowerCase();
+
       playRound(playerSelection, computerPlay());
       
-      resultText.textContent = result;
+      // updates the scoreboard and shows the round result
       playerScoreText.textContent = "Your Score: " + playerScore;
       computerScoreText.textContent = "Computer Score: " + computerScore;
 
+      resultText.textContent = result;
+
+      // shows the winner of the game once either player reaches 5 points
+      // - displays the "Play Again" button
+      // - disables the option buttons
+      // - resets the score
       if(playerScore == 5) {
         winnerText.innerHTML = "<span style=\"color: rgb(36, 172, 104);\">You won the game!</span>";
+        playAgainButton.classList.remove("hidden");
 
-        const rockButton = document.querySelector(".rock-btn");
         rockButton.setAttribute("disabled", "disabled");
         rockButton.setAttribute("style", "background-color: #484848; cursor: default;");
 
-        const paperButton = document.querySelector(".paper-btn");
         paperButton.setAttribute("disabled", "disabled");
         paperButton.setAttribute("style", "background-color: #484848; cursor: default;");
 
-        const scissorsButton = document.querySelector(".scissors-btn");
         scissorsButton.setAttribute("disabled", "disabled");
         scissorsButton.setAttribute("style", "background-color: #484848; cursor: default;");
 
@@ -117,16 +136,14 @@ function game() {
         computerScore = 0;
       } else if(computerScore == 5) {
         winnerText.innerHTML = "<span style=\"color: rgb(172, 36, 36);\">You lost the game!</span>";
+        playAgainButton.classList.remove("hidden");
 
-        const rockButton = document.querySelector(".rock-btn");
         rockButton.setAttribute("disabled", "disabled");
         rockButton.setAttribute("style", "background-color: #484848; cursor: default;");
 
-        const paperButton = document.querySelector(".paper-btn");
         paperButton.setAttribute("disabled", "disabled");
         paperButton.setAttribute("style", "background-color: #484848; cursor: default;");
 
-        const scissorsButton = document.querySelector(".scissors-btn");
         scissorsButton.setAttribute("disabled", "disabled");
         scissorsButton.setAttribute("style", "background-color: #484848; cursor: default;");
 
@@ -137,6 +154,25 @@ function game() {
       }
     });
   });
+}
+
+/* Resets all components to their default state */
+function reset() {
+  // Enables the buttons again
+  rockButton.removeAttribute("disabled");
+  rockButton.removeAttribute("style");
+
+  paperButton.removeAttribute("disabled");
+  paperButton.removeAttribute("style");
+
+  scissorsButton.removeAttribute("disabled");
+  scissorsButton.removeAttribute("style");
+
+  // hides the round result text
+  resultText.classList.add("hidden");
+
+  // hides the "Play Again" button
+  playAgainButton.classList.add("hidden");
 }
 
 game();
